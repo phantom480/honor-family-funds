@@ -1,8 +1,10 @@
 
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
 import CampaignFilter from '@/components/campaigns/CampaignFilter';
 import CampaignList from '@/components/campaigns/CampaignList';
+import { Shield } from 'lucide-react';
 
 // Mock campaign data with amounts in Rupees
 const CAMPAIGNS = [
@@ -87,6 +89,20 @@ const Campaigns = () => {
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Support the families of brave Indian Army soldiers by contributing to these campaigns
             </p>
+          </div>
+
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-8 flex items-start gap-3">
+            <div className="text-blue-500 mt-1">
+              <Shield className="h-5 w-5" />
+            </div>
+            <div>
+              <h3 className="font-medium text-blue-700">Admin-Verified Campaigns</h3>
+              <p className="text-sm text-blue-600">
+                All campaigns are created and verified by our administrative team to ensure authenticity. 
+                If you're a family member of a fallen soldier and need assistance, please 
+                <Link to="/contact" className="text-blue-700 font-medium hover:underline"> contact our support team</Link>.
+              </p>
+            </div>
           </div>
 
           <CampaignFilter onFilter={handleFilter} />
