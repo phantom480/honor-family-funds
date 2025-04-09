@@ -4,15 +4,15 @@ import Layout from '@/components/layout/Layout';
 import CampaignFilter from '@/components/campaigns/CampaignFilter';
 import CampaignList from '@/components/campaigns/CampaignList';
 
-// Mock campaign data
+// Mock campaign data with amounts in Rupees
 const CAMPAIGNS = [
   {
     id: 1,
     title: "Support the Sharma Family",
     description: "Help Maj. Rajesh Sharma's family with education expenses after his heroic sacrifice in service.",
     imageUrl: "https://images.unsplash.com/photo-1541802645635-11f2286a7482?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-    raised: 950000,
-    goal: 2000000,
+    raised: 950000, // ₹9.5 Lakhs
+    goal: 2000000, // ₹20 Lakhs
     daysLeft: 18,
     supporters: 142
   },
@@ -21,8 +21,8 @@ const CAMPAIGNS = [
     title: "Kumar Family Medical Fund",
     description: "Support the Kumar family with medical expenses following the loss of Capt. Sunil Kumar.",
     imageUrl: "https://images.unsplash.com/photo-1543269664-76bc3997d9ea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-    raised: 1500000,
-    goal: 2500000,
+    raised: 1500000, // ₹15 Lakhs
+    goal: 2500000, // ₹25 Lakhs
     daysLeft: 12,
     supporters: 208
   },

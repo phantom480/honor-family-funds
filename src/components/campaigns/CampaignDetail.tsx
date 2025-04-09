@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
@@ -32,14 +31,13 @@ interface CampaignDetailProps {
 const CampaignDetail: React.FC<CampaignDetailProps> = ({ campaign }) => {
   const percentFunded = Math.min(Math.round((campaign.raised / campaign.goal) * 100), 100);
 
-  // Format currency in Indian format (lakhs and crores)
-  const formatIndianCurrency = (amount: number) => {
-    const formatter = new Intl.NumberFormat('en-IN', {
+  // Format currency in Indian Rupee format
+  const formatIndianRupee = (amount: number) => {
+    return new Intl.NumberFormat('en-IN', {
       style: 'currency',
       currency: 'INR',
-      maximumFractionDigits: 0,
-    });
-    return formatter.format(amount);
+      maximumFractionDigits: 0
+    }).format(amount);
   };
 
   return (
@@ -133,8 +131,8 @@ const CampaignDetail: React.FC<CampaignDetailProps> = ({ campaign }) => {
             {/* Funding Progress */}
             <div className="mb-6">
               <div className="flex justify-between text-sm mb-2">
-                <span className="font-semibold text-xl text-patriot-blue">{formatIndianCurrency(campaign.raised)}</span>
-                <span className="text-gray-500 self-end">raised of {formatIndianCurrency(campaign.goal)}</span>
+                <span className="font-semibold text-xl text-patriot-blue">{formatIndianRupee(campaign.raised)}</span>
+                <span className="text-gray-500 self-end">raised of {formatIndianRupee(campaign.goal)}</span>
               </div>
               <Progress value={percentFunded} className="h-2 mb-2" />
               <div className="flex justify-between text-sm">
