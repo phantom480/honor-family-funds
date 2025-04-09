@@ -5,17 +5,17 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Checkbox } from '@/components/ui/checkbox';
-import { CreditCard, DollarSign } from 'lucide-react';
+import { CreditCard, IndianRupee } from 'lucide-react';
 
 interface DonationFormProps {
   campaignTitle: string;
   onSubmit: (amount: number, isAnonymous: boolean) => void;
 }
 
-const predefinedAmounts = [25, 50, 100, 250];
+const predefinedAmounts = [2000, 5000, 10000, 25000];
 
 const DonationForm: React.FC<DonationFormProps> = ({ campaignTitle, onSubmit }) => {
-  const [amount, setAmount] = useState(50);
+  const [amount, setAmount] = useState(5000);
   const [customAmount, setCustomAmount] = useState('');
   const [isAnonymous, setIsAnonymous] = useState(false);
   const [isCustomAmount, setIsCustomAmount] = useState(false);
@@ -59,13 +59,13 @@ const DonationForm: React.FC<DonationFormProps> = ({ campaignTitle, onSubmit }) 
                 className={!isCustomAmount && amount === presetAmount ? "bg-patriot-blue" : ""}
                 onClick={() => handleAmountSelect(presetAmount)}
               >
-                ${presetAmount}
+                ₹{presetAmount}
               </Button>
             ))}
           </div>
           
           <div className="relative">
-            <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
+            <IndianRupee className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
             <Input
               id="donation-amount"
               type="text"
@@ -89,7 +89,7 @@ const DonationForm: React.FC<DonationFormProps> = ({ campaignTitle, onSubmit }) 
         <Tabs defaultValue="creditCard" className="mb-6">
           <TabsList className="grid w-full grid-cols-2 mb-4">
             <TabsTrigger value="creditCard">Credit Card</TabsTrigger>
-            <TabsTrigger value="paypal">PayPal</TabsTrigger>
+            <TabsTrigger value="paypal">UPI/Net Banking</TabsTrigger>
           </TabsList>
           
           <TabsContent value="creditCard" className="space-y-4">
@@ -121,17 +121,17 @@ const DonationForm: React.FC<DonationFormProps> = ({ campaignTitle, onSubmit }) 
           </TabsContent>
           
           <TabsContent value="paypal" className="text-center py-6">
-            <p className="text-gray-600 mb-4">You will be redirected to PayPal to complete your donation.</p>
-            <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_37x23.jpg" alt="PayPal" className="mx-auto" />
+            <p className="text-gray-600 mb-4">You will be redirected to complete your donation via UPI or Net Banking.</p>
+            <img src="https://static.wikia.nocookie.net/logopedia/images/5/5f/UPI-Logo-vector.png" alt="UPI" width="120" className="mx-auto" />
           </TabsContent>
         </Tabs>
         
         <Button type="submit" className="w-full bg-patriot-red hover:bg-red-700 py-6 text-lg">
-          Donate ${amount || 0}
+          Donate ₹{amount || 0}
         </Button>
         
         <p className="text-xs text-gray-500 text-center mt-4">
-          By proceeding, you agree to our Terms of Service and acknowledge that your donation is not tax-deductible.
+          By proceeding, you agree to our Terms of Service. Your donation directly supports the families of brave Indian Army soldiers.
         </p>
       </form>
     </div>

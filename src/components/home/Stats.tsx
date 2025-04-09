@@ -3,7 +3,7 @@ import React from 'react';
 
 const stats = [
   {
-    value: "2.7M+",
+    value: "₹2.1Cr+",
     label: "Total Raised"
   },
   {
@@ -16,7 +16,7 @@ const stats = [
   },
   {
     value: "98%",
-    label: "Funds Directly to Families"
+    label: "Funds Directly to Army Families"
   }
 ];
 

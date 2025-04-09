@@ -32,6 +32,16 @@ interface CampaignDetailProps {
 const CampaignDetail: React.FC<CampaignDetailProps> = ({ campaign }) => {
   const percentFunded = Math.min(Math.round((campaign.raised / campaign.goal) * 100), 100);
 
+  // Format currency in Indian format (lakhs and crores)
+  const formatIndianCurrency = (amount: number) => {
+    const formatter = new Intl.NumberFormat('en-IN', {
+      style: 'currency',
+      currency: 'INR',
+      maximumFractionDigits: 0,
+    });
+    return formatter.format(amount);
+  };
+
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -123,8 +133,8 @@ const CampaignDetail: React.FC<CampaignDetailProps> = ({ campaign }) => {
             {/* Funding Progress */}
             <div className="mb-6">
               <div className="flex justify-between text-sm mb-2">
-                <span className="font-semibold text-xl text-patriot-blue">${campaign.raised.toLocaleString()}</span>
-                <span className="text-gray-500 self-end">raised of ${campaign.goal.toLocaleString()}</span>
+                <span className="font-semibold text-xl text-patriot-blue">{formatIndianCurrency(campaign.raised)}</span>
+                <span className="text-gray-500 self-end">raised of {formatIndianCurrency(campaign.goal)}</span>
               </div>
               <Progress value={percentFunded} className="h-2 mb-2" />
               <div className="flex justify-between text-sm">
@@ -173,7 +183,7 @@ const CampaignDetail: React.FC<CampaignDetailProps> = ({ campaign }) => {
                 <div>
                   <h4 className="font-semibold text-navy-800 text-sm">Trust & Safety</h4>
                   <p className="text-xs text-gray-600 mt-1">
-                    All donations are secured and verified. Our platform has a 98% fund delivery rate to families.
+                    All donations are secured and verified. Our platform has a 98% fund delivery rate to Indian Army families.
                   </p>
                 </div>
               </div>
