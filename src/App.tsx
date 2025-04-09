@@ -10,6 +10,7 @@ import CampaignDetail from "./pages/CampaignDetail";
 import About from "./pages/About";
 import HowItWorks from "./pages/HowItWorks";
 import Login from "./pages/Login";
+import AdminLogin from "./pages/AdminLogin";
 import StartCampaign from "./pages/StartCampaign";
 import NotFound from "./pages/NotFound";
 
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/about" element={<About />} />
           <Route path="/how-it-works" element={<HowItWorks />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/admin" element={<AdminLogin />} />
           <Route path="/start-campaign" element={<StartCampaign />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

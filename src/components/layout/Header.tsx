@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, Heart, Search, User } from 'lucide-react';
+import { Menu, X, Heart, Search, User, Shield } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 
 const Header = () => {
@@ -39,11 +39,20 @@ const Header = () => {
             <Button variant="ghost" size="icon">
               <Search className="h-5 w-5" />
             </Button>
-            <Button variant="ghost" size="icon">
-              <User className="h-5 w-5" />
+            <Button variant="ghost" size="icon" asChild>
+              <Link to="/login">
+                <User className="h-5 w-5" />
+              </Link>
             </Button>
-            <Button variant="default" className="bg-patriot-red hover:bg-red-700 text-white">
-              Start a Campaign
+            <Button variant="ghost" size="icon" asChild className="text-patriot-red">
+              <Link to="/admin">
+                <Shield className="h-5 w-5" />
+              </Link>
+            </Button>
+            <Button variant="default" className="bg-patriot-red hover:bg-red-700 text-white" asChild>
+              <Link to="/start-campaign">
+                Start a Campaign
+              </Link>
             </Button>
           </div>
 
@@ -67,12 +76,22 @@ const Header = () => {
               <Link to="/how-it-works" className="text-navy-800 font-medium py-2" onClick={toggleMenu}>How It Works</Link>
             </nav>
             <div className="pt-4 border-t flex flex-col space-y-2">
-              <Button variant="outline" className="w-full justify-start" onClick={toggleMenu}>
-                <User className="h-5 w-5 mr-2" />
-                Login / Register
+              <Button variant="outline" className="w-full justify-start" onClick={toggleMenu} asChild>
+                <Link to="/login">
+                  <User className="h-5 w-5 mr-2" />
+                  Login / Register
+                </Link>
               </Button>
-              <Button variant="default" className="w-full bg-patriot-red hover:bg-red-700" onClick={toggleMenu}>
-                Start a Campaign
+              <Button variant="outline" className="w-full justify-start text-patriot-red" onClick={toggleMenu} asChild>
+                <Link to="/admin">
+                  <Shield className="h-5 w-5 mr-2" />
+                  Admin Portal
+                </Link>
+              </Button>
+              <Button variant="default" className="w-full bg-patriot-red hover:bg-red-700" onClick={toggleMenu} asChild>
+                <Link to="/start-campaign">
+                  Start a Campaign
+                </Link>
               </Button>
             </div>
           </div>
